@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, 
+         VictoryStack } from 'victory';
 
 const data2012 = [
   {quarter: 1, earnings: 13000},
@@ -36,45 +37,46 @@ class Main extends React.Component {
       <div>
         <h1>Victory Tutorial</h1>
         <VictoryChart
-          domainPadding={10}
           theme={VictoryTheme.material}
+          domainPadding={20}
         >
           <VictoryAxis
             tickValues={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
           />
           <VictoryAxis
-            dependentAxis
+            dependentAxis={true}
             tickFormat={(x) => (`$${x / 1000}k`)}
           />
           <VictoryStack
             colorScale={"warm"}
           >
-            <VictoryBar
+            <VictoryBar 
               data={data2012}
               x={"quarter"}
               y={"earnings"}
             />
-            <VictoryBar
+            <VictoryBar 
               data={data2013}
               x={"quarter"}
               y={"earnings"}
             />
-            <VictoryBar
+            <VictoryBar 
               data={data2014}
               x={"quarter"}
               y={"earnings"}
             />
-            <VictoryBar
+            <VictoryBar 
               data={data2015}
               x={"quarter"}
               y={"earnings"}
             />
           </VictoryStack>
-        </VictoryChart>
+        </VictoryChart>  
       </div>
     );
   }
 }
+
 
 const app = document.getElementById('app');
 ReactDOM.render(<Main />, app);
